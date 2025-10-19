@@ -1,15 +1,15 @@
 (kicad_sch (version 20230121)
 
-  (uuid "12345678-1234-1234-1234-123456789012")
+  (uuid "12345678-1234-1234-1234-123456789abc")
 
   (paper "A4")
 
   (title_block
-    (title "VAZ 21011 + Raspberry Pi 5 Integration")
+    (title "VAZ 21011 + Raspberry Pi 5 Control System")
     (date "2025-10-20")
     (rev "1.0")
-    (comment 1 "Control system for VAZ 21011")
-    (comment 2 "Using Raspberry Pi 5")
+    (comment 1 "Raspberry Pi 5 Control System for VAZ 21011")
+    (comment 2 "GPIO connections for engine management")
   )
 
   (lib_symbols
@@ -58,36 +58,95 @@
     )
   )
 
-  (junction (at 100 100) (diameter 0) (color 0 0 0 0))
-
-  (wire (pts (xy 50 100) (xy 100 100)) (stroke (width 0)) (uuid "11111111-1111-1111-1111-111111111111"))
-  (wire (pts (xy 100 100) (xy 150 100)) (stroke (width 0)) (uuid "22222222-2222-2222-2222-222222222222"))
-
-  (symbol (at 30 100 0) (uuid "33333333-3333-3333-3333-333333333333")
-    (property "Reference" "J1" (id 0) (at 0 0 0))
-    (property "Value" "GPIO_Pi5" (id 1) (at 0 -2.54 0))
-    (pin "1" (uuid "44444444-4444-4444-4444-444444444444"))
+  (text "Raspberry Pi 5 GPIO Connection Scheme" (at 20 20 0)
+    (effects (font (size 2 2) (thickness 0.4)))
   )
 
-  (symbol (at 80 100 0) (uuid "55555555-5555-5555-5555-555555555555")
-    (property "Reference" "R1" (id 0) (at 0 0 0))
-    (property "Value" "10k" (id 1) (at 0 -2.54 0))
-    (pin "1" (uuid "66666666-6666-6666-6666-666666666666"))
-    (pin "2" (uuid "77777777-7777-7777-7777-777777777777"))
+  (text "CONNECTORS:" (at 20 40 0)
+    (effects (font (size 1.5 1.5) (thickness 0.3)))
   )
 
-  (symbol (at 130 100 0) (uuid "88888888-8888-8888-8888-888888888888")
-    (property "Reference" "C1" (id 0) (at 0 0 0))
-    (property "Value" "100nF" (id 1) (at 0 -2.54 0))
-    (pin "1" (uuid "99999999-9999-9999-9999-999999999999"))
-    (pin "2" (uuid "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"))
+  (text "I2C Bus (GPIO2=SDA, GPIO3=SCL)" (at 20 60 0)
+    (effects (font (size 1 1) (thickness 0.2)))
   )
 
-  (text "Raspberry Pi 5 GPIO Connections\nfor VAZ 21011 Control" (at 50 150 0)
-    (effects (font (size 1.27 1.27) (thickness 0.15)))
+  (text "Temperature Sensor (DS18B20)" (at 20 80 0)
+    (effects (font (size 1 1) (thickness 0.2)))
   )
 
-  (text "GPIO Connections:\n- GPIO2/GPIO3: I2C (sensors)\n- GPIO4-GPIO27: Control outputs\n- GPIO14/GPIO15: UART (diagnostics)\n- GPIO10/GPIO9/GPIO11: SPI (optional)" (at 50 130 0)
-    (effects (font (size 1.27 1.27) (thickness 0.15)))
+  (text "Fuel Level Sensor" (at 20 100 0)
+    (effects (font (size 1 1) (thickness 0.2)))
+  )
+
+  (text "Oil Pressure Sensor" (at 20 120 0)
+    (effects (font (size 1 1) (thickness 0.2)))
+  )
+
+  (text "GPIO OUTPUTS:" (at 20 150 0)
+    (effects (font (size 1.5 1.5) (thickness 0.3)))
+  )
+
+  (text "GPIO4 - Ignition Control" (at 20 170 0)
+    (effects (font (size 1 1) (thickness 0.2)))
+  )
+
+  (text "GPIO17 - Starter Relay" (at 20 190 0)
+    (effects (font (size 1 1) (thickness 0.2)))
+  )
+
+  (text "GPIO27 - Fuel Pump Relay" (at 20 210 0)
+    (effects (font (size 1 1) (thickness 0.2)))
+  )
+
+  (text "GPIO22 - Cooling Fan Relay" (at 20 230 0)
+    (effects (font (size 1 1) (thickness 0.2)))
+  )
+
+  (text "GPIO INPUTS:" (at 20 260 0)
+    (effects (font (size 1.5 1.5) (thickness 0.3)))
+  )
+
+  (text "GPIO5 - RPM Sensor" (at 20 280 0)
+    (effects (font (size 1 1) (thickness 0.2)))
+  )
+
+  (text "GPIO6 - Speed Sensor" (at 20 300 0)
+    (effects (font (size 1 1) (thickness 0.2)))
+  )
+
+  (text "GPIO12 - Throttle Position (ADC)" (at 20 320 0)
+    (effects (font (size 1 1) (thickness 0.2)))
+  )
+
+  (text "GPIO13 - Brake Pressure (ADC)" (at 20 340 0)
+    (effects (font (size 1 1) (thickness 0.2)))
+  )
+
+  (text "UART INTERFACE:" (at 20 370 0)
+    (effects (font (size 1.5 1.5) (thickness 0.3)))
+  )
+
+  (text "GPIO14/GPIO15 - Serial Port for OBD-II Diagnostics" (at 20 390 0)
+    (effects (font (size 1 1) (thickness 0.2)))
+  )
+
+  (text "POWER SUPPLY:" (at 250 40 0)
+    (effects (font (size 1.5 1.5) (thickness 0.3)))
+  )
+
+  (text "+12V from vehicle battery" (at 250 60 0)
+    (effects (font (size 1 1) (thickness 0.2)))
+  )
+
+  (text "+5V for Raspberry Pi (via buck converter)" (at 250 80 0)
+    (effects (font (size 1 1) (thickness 0.2)))
+  )
+
+  (text "+3.3V for GPIO level shifting" (at 250 100 0)
+    (effects (font (size 1 1) (thickness 0.2)))
+  )
+
+  (text "GND - Common ground with vehicle" (at 250 120 0)
+    (effects (font (size 1 1) (thickness 0.2)))
   )
 )

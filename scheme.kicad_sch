@@ -1,0 +1,150 @@
+(kicad_sch (version 20230121)
+  (uuid "vaz-pi5-main-12345678")
+  (paper "A3")
+  (title_block
+    (title "VAZ 21011 + Raspberry Pi 5 Control System")
+    (date "2025-10-20")
+    (rev "2.0")
+    (comment 1 "Complete engine management and monitoring system")
+    (comment 2 "Raspberry Pi 5 based control for VAZ 21011")
+    (comment 3 "GPIO connections with sensors and relays")
+    (comment 4 "OBD-II diagnostic interface")
+  )
+
+  (lib_symbols
+    (symbol "Device:R"
+      (pin_numbers hide)
+      (pin_names (offset 0))
+      (property "Reference" "R" (id 0) (at 2.032 0 90))
+      (property "Value" "R" (id 1) (at 0 0 90))
+      (symbol "R_0_1"
+        (rectangle (start -1.016 -2.54) (end 1.016 2.54)
+          (stroke (width 0.254)) (fill (type none))
+        )
+      )
+      (symbol "R_1_1"
+        (pin passive line (at 0 3.81 270) (length 1.27) (name "~" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15)))))
+        (pin passive line (at 0 -3.81 90) (length 1.27) (name "~" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "2" (effects (font (size 1.27 1.27) (thickness 0.15)))))
+      )
+    )
+
+    (symbol "Device:C"
+      (pin_numbers hide)
+      (pin_names (offset 0.254))
+      (property "Reference" "C" (id 0) (at 0.635 2.54 0))
+      (property "Value" "C" (id 1) (at 0.635 -2.54 0))
+      (symbol "C_0_1"
+        (polyline (pts (xy -2.032 -0.762) (xy 2.032 -0.762)) (stroke (width 0.508)))
+        (polyline (pts (xy -2.032 0.762) (xy 2.032 0.762)) (stroke (width 0.508)))
+      )
+      (symbol "C_1_1"
+        (pin passive line (at 0 3.81 270) (length 3.048) (name "~" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15)))))
+        (pin passive line (at 0 -3.81 90) (length 3.048) (name "~" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "2" (effects (font (size 1.27 1.27) (thickness 0.15)))))
+      )
+    )
+
+    (symbol "Connector_Generic:Conn_01x02_Pin"
+      (pin_names (offset 1.016) hide)
+      (property "Reference" "J" (id 0) (at 0 2.54 0))
+      (property "Value" "Conn_01x02_Pin" (id 1) (at 0 -5.08 0))
+      (symbol "Conn_01x02_Pin_1_1"
+        (rectangle (start -1.27 -4.953) (end 0 5.047)
+          (stroke (width 0.254)) (fill (type none))
+        )
+        (pin passive line (at -5.08 3.81 0) (length 3.81) (name "Pin_1" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15)))))
+        (pin passive line (at -5.08 1.27 0) (length 3.81) (name "Pin_2" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "2" (effects (font (size 1.27 1.27) (thickness 0.15)))))
+      )
+    )
+
+    (symbol "power:+12V"
+      (power)
+      (pin_names (offset 0))
+      (property "Reference" "#PWR" (id 0) (at 0 -3.81 0))
+      (property "Value" "+12V" (id 1) (at 0 3.556 0))
+      (symbol "+12V_0_1"
+        (polyline (pts (xy -0.762 1.27) (xy 0 2.54)) (stroke (width 0.254)))
+        (polyline (pts (xy 0 0) (xy 0 2.54)) (stroke (width 0.254)))
+        (polyline (pts (xy 0 2.54) (xy 0.762 1.27)) (stroke (width 0.254)))
+      )
+      (symbol "+12V_1_1"
+        (pin power_in line (at 0 0 270) (length 0) hide (name "+12V" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15)))))
+      )
+    )
+
+    (symbol "power:GND"
+      (power)
+      (pin_names (offset 0))
+      (property "Reference" "#PWR" (id 0) (at 0 -6.35 0))
+      (property "Value" "GND" (id 1) (at 0 -3.81 0))
+      (symbol "GND_0_1"
+        (polyline (pts (xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)) (stroke (width 0)) (fill (type none)))
+      )
+      (symbol "GND_1_1"
+        (pin power_in line (at 0 0 270) (length 0) hide (name "GND" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15)))))
+      )
+    )
+
+    (symbol "power:+5V"
+      (power)
+      (pin_names (offset 0))
+      (property "Reference" "#PWR" (id 0) (at 0 -3.81 0))
+      (property "Value" "+5V" (id 1) (at 0 3.556 0))
+      (symbol "+5V_0_1"
+        (polyline (pts (xy -0.762 1.27) (xy 0 2.54)) (stroke (width 0.254)))
+        (polyline (pts (xy 0 0) (xy 0 2.54)) (stroke (width 0.254)))
+        (polyline (pts (xy 0 2.54) (xy 0.762 1.27)) (stroke (width 0.254)))
+      )
+      (symbol "+5V_1_1"
+        (pin power_in line (at 0 0 270) (length 0) hide (name "+5V" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15)))))
+      )
+    )
+
+    (symbol "power:+3V3"
+      (power)
+      (pin_names (offset 0))
+      (property "Reference" "#PWR" (id 0) (at 0 -3.81 0))
+      (property "Value" "+3V3" (id 1) (at 0 3.556 0))
+      (symbol "+3V3_0_1"
+        (polyline (pts (xy -0.762 1.27) (xy 0 2.54)) (stroke (width 0.254)))
+        (polyline (pts (xy 0 0) (xy 0 2.54)) (stroke (width 0.254)))
+        (polyline (pts (xy 0 2.54) (xy 0.762 1.27)) (stroke (width 0.254)))
+      )
+      (symbol "+3V3_1_1"
+        (pin power_in line (at 0 0 270) (length 0) hide (name "+3V3" (effects (font (size 1.27 1.27) (thickness 0.15)))) (number "1" (effects (font (size 1.27 1.27) (thickness 0.15)))))
+      )
+    )
+  )
+
+  (wire (pts (xy 50 200) (xy 100 200)) (stroke (width 0)) (uuid "w1"))
+  (wire (pts (xy 100 200) (xy 150 200)) (stroke (width 0)) (uuid "w2"))
+  (wire (pts (xy 50 100) (xy 100 100)) (stroke (width 0)) (uuid "w3"))
+  (wire (pts (xy 100 100) (xy 150 100)) (stroke (width 0)) (uuid "w4"))
+
+  (symbol (at 30 200 0) (uuid "uuid1")
+    (property "Reference" "J1" (id 0) (at 0 0 0))
+    (property "Value" "I2C" (id 1) (at 0 -2.54 0))
+  )
+
+  (symbol (at 30 100 0) (uuid "uuid2")
+    (property "Reference" "J2" (id 0) (at 0 0 0))
+    (property "Value" "GPIO_IN" (id 1) (at 0 -2.54 0))
+  )
+
+  (symbol (at 50 250 0) (uuid "uuid3")
+    (property "Reference" "R1" (id 0) (at 0 0 0))
+    (property "Value" "10k" (id 1) (at 0 -2.54 0))
+  )
+
+  (symbol (at 100 250 0) (uuid "uuid4")
+    (property "Reference" "C1" (id 0) (at 0 0 0))
+    (property "Value" "100nF" (id 1) (at 0 -2.54 0))
+  )
+
+  (text "GPIO CONNECTIONS FOR VAZ 21011" (at 50 320 0)
+    (effects (font (size 1.5 1.5) (thickness 0.3)))
+  )
+
+  (text "SECTION 1: POWER SUPPLY\n+12V ---- Vehicle Battery (via 20A fuse)\n+5V ---- DC-DC Buck Converter (12V to 5V, 5A)\n+3.3V --- Raspberry Pi GPIO supply\nGND ---- Common ground with vehicle chassis\n\nSECTION 2: I2C SENSOR BUS (GPIO2=SDA, GPIO3=SCL)\nPull-up resistors: 10kΩ to +3.3V\nDevices: DS18B20 Temp Sensor, BMP280 Pressure, ADS1115 ADC\n\nSECTION 3: GPIO OUTPUTS\nGPIO4  ---- Ignition Relay (via 1kΩ resistor + 2N2222)\nGPIO17 ---- Starter Relay Control\nGPIO27 ---- Fuel Pump Relay\nGPIO22 ---- Cooling Fan Relay\nGPIO23 ---- Check Engine Light (LED + 330Ω)\nGPIO24 ---- Idle Control Valve\nGPIO25 ---- Air Intake Control\n\nSECTION 4: GPIO INPUTS\nGPIO5  ---- RPM Sensor (Hall effect, 0-12V level shifter)\nGPIO6  ---- Speed Sensor (Speedometer signal)\nGPIO12 ---- Throttle Position Sensor (via ADS1115)\nGPIO13 ---- Brake Pressure Switch\nGPIO18 ---- Engine Load Sensor (via ADS1115)\nGPIO19 ---- Oxygen Sensor Signal (via ADS1115)\nGPIO20 ---- Oil Pressure Switch\nGPIO21 ---- Temperature Warning Switch\n\nSECTION 5: UART INTERFACE (GPIO14, GPIO15)\nGPIO14 (TX) ---- RS-232/CAN Interface\nGPIO15 (RX) ---- Serial port for diagnostic tools\nBaud rate: 115200 bps for OBD-II compatibility\n\nSECTION 6: PROTECTION & FILTERING\nFlyback Diodes: 1N4148 across all relay coils\nLevel Shifters: 74HCT245 for voltage conversion\nDecoupling: 100nF ceramic near each IC\nBulk Cap: 1000µF on +5V rail\nEMI: Ferrite beads on GPIO inputs\nTransient: TVS diodes on sensor inputs\n\nSECTION 7: RELAY CIRCUIT\nGPIO4 -> 1kΩ Resistor -> 2N2222 Base\n2N2222 Collector -> Relay Coil\nRelay NC/NO -> Ignition System\nFlyback Diode 1N4148 across coil\nApply topology to all relay outputs\n\nSECTION 8: ADC CONFIGURATION (ADS1115 I2C 16-bit)\nA0 ---- Throttle Position (0-5V)\nA1 ---- Engine Load (0-5V)\nA2 ---- Oxygen Sensor (0-5V)\nA3 ---- Spare channel\nResolution: 0.1875 mV/bit (±6.144V range)\nSampling: 860 SPS (samples/sec)\n\nSECTION 9: SAFETY FEATURES\nWatchdog Timer: Resets Pi if hang\nFuse Protection: 20A on +12V, 5A on +5V\nThermal: Heat sink on regulators\nOvercurrent: Relay diodes prevent back-EMF\nVoltage: Zener diodes on GPIO\nFailsafe: Default relay states on restart\n\nSECTION 10: PCB LAYOUT\nRaspberry Pi in center\nRelays on right (high current)\nSensors on left (signal conditioning)\nStar grounding at single point\nShielded cables for sensor inputs\nKeep high-current away from signals\nVia stitching around digital sections" (at 50 340 0)
+    (effects (font (size 0.8 0.8) (thickness 0.15)))
+  )
+)
