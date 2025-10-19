@@ -1,0 +1,32 @@
+@startuml
+title Схема интеграции Raspberry Pi 5 в ВАЗ 21011
+
+actor Водитель
+participant RaspberryPi5 as RPI
+participant Датчики as Sensors
+participant Актюаторы as Actuators
+participant Дисплей as Display
+
+Водитель -> RPI: Запуск системы
+RPI -> Sensors: Чтение данных (скорость, температура и т.д.)
+Sensors --> RPI: Данные
+RPI -> Actuators: Управление (зажигание, тормоза и т.д.)
+Actuators --> RPI: Подтверждение
+RPI -> Display: Отображение информации
+Display --> Водитель: Информация
+
+note right of RPI
+  Raspberry Pi 5 подключен к:
+  - GPIO для датчиков
+  - CAN шина (если модифицирована)
+  - Экран для интерфейса
+end note
+
+note right of Sensors
+  Датчики ВАЗ 21011:
+  - Датчик скорости
+  - Датчик температуры двигателя
+  - Датчик уровня топлива
+end note
+
+@enduml
